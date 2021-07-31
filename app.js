@@ -1,4 +1,44 @@
-cont numberButtons = document.querySelectorAll('[data-number]');
+class Calculator {
+  constructor(previousOperndTextElement, currentOperndTextElement){
+    this.previousOperndTextElement = previousOperndTextElement
+    this.currentOperndTextElement = currentOperndTextElement
+    this.clear();
+  }
+
+  claer() {
+    this.currentOperand = "";
+    this.previousOpernd = ''
+    this.operation = undefined;
+  }
+
+  delete (){
+    this.currentOperand = this.currentOperand.toString().slice(0,-1)
+  }
+
+  appendNumber(number) {
+    if(number === '' && this.currentOperand.includes('.')) return 
+    this.currentOperand = this.currentOperand.toString() + number.toString()
+  }
+
+  chooseOperation(operation) {
+    if(this.currentOperand === '') return 
+    if(this.previousOpernd !== '') {
+      this.compute()
+    }
+    this.operation - operation
+    this.previousOpernd = this.currentOperand
+    this.currentOperand = ''
+  }
+  compute() {
+    
+  }
+}
+
+
+
+
+
+const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll("[[data-operation]");
 const equalsButton = document.querySelector("[data-equals]");
 const deleteButton = document.querySelector("[data-delete]");
